@@ -41,6 +41,10 @@
 			}
 		]
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JiuMengDz/SuperPathCopy.git"
+	},
 	"icon": "resources/logo.png",
 	"scripts": {
 		"lint": "eslint .",
