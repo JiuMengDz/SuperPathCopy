@@ -1,0 +1,55 @@
+{
+	"name": "superpathcopy",
+	"displayName": "SuperPathCopy",
+	"description": "The extension provides a convenient way for path processing.",
+	"publisher": "liudewei",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.43.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension_copy",
+				"title": "Hello World"
+			}
+		],
+		"configuration": [
+			{
+				"title": "superPathCopy",
+				"properties": {
+					"superPathCopy.ignore_path": {
+						"type": "array",
+						"description": "Ignored paths."
+					},
+					"superPathCopy.ignore_exts": {
+						"type": "array",
+						"description": "File suffix ignored,etc \".lua\""
+					},
+					"superPathCopy.format_copy": {
+						"type": "string",
+						"description": "Predefined replacement text in the template, '@result' will be replaced with the specified result."
+					}
+				}
+			}
+		]
+	},
+	"icon": "resources/logo.png",
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {},
+	"dependencies": {
+		"copy-paste": "^1.3.0",
+		"path": "^0.12.7"
+	}
+}
