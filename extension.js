@@ -3,6 +3,7 @@ const copy = require('copy-paste').copy
 const path = require('path')
 
 var status_bar = vscode.window.createStatusBarItem();
+status_bar.tooltip = "copy path";
 var ignore_paths = {}
 var ignore_exts = {}
 var format_str
