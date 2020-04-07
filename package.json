@@ -2,8 +2,8 @@
 	"name": "superpathcopy",
 	"displayName": "SuperPathCopy",
 	"description": "The extension provides a convenient way for path processing.",
-	"publisher": "liudewei",
-	"version": "0.0.1",
+	"publisher": "JiuMengDZ",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.43.0"
 	},
@@ -23,17 +23,17 @@
 		],
 		"configuration": [
 			{
-				"title": "superPathCopy",
+				"title": "SuperPathCopy",
 				"properties": {
-					"superPathCopy.ignore_path": {
+					"SuperPathCopy.ignore_path": {
 						"type": "array",
 						"description": "Ignored paths."
 					},
-					"superPathCopy.ignore_exts": {
+					"SuperPathCopy.ignore_exts": {
 						"type": "array",
 						"description": "File suffix ignored,etc \".lua\""
 					},
-					"superPathCopy.format_copy": {
+					"SuperPathCopy.format_copy": {
 						"type": "string",
 						"description": "Predefined replacement text in the template, '@result' will be replaced with the specified result."
 					}

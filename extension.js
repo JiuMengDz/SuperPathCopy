@@ -38,14 +38,14 @@ function _get_active_path(text_editor = undefined){
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	ignore_paths = vscode.workspace.getConfiguration("superPathCopy").get("ignore_path");
-	ignore_exts = vscode.workspace.getConfiguration("superPathCopy").get("ignore_exts");
-	format_str = vscode.workspace.getConfiguration("superPathCopy").get("format_copy");
+	ignore_paths = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_path");
+	ignore_exts = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_exts");
+	format_str = vscode.workspace.getConfiguration("SuperPathCopy").get("format_copy");
 	vscode.workspace.onDidChangeConfiguration((event)=>{
-		if(!event.affectsConfiguration("superPathCopy")){ return; }
-		ignore_paths = vscode.workspace.getConfiguration("superPathCopy").get("ignore_path");
-		ignore_exts = vscode.workspace.getConfiguration("superPathCopy").get("ignore_exts");
-		format_str = vscode.workspace.getConfiguration("superPathCopy").get("format_copy");
+		if(!event.affectsConfiguration("SuperPathCopy")){ return; }
+		ignore_paths = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_path");
+		ignore_exts = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_exts");
+		format_str = vscode.workspace.getConfiguration("SuperPathCopy").get("format_copy");
 		_get_active_path();
 	})
 	
