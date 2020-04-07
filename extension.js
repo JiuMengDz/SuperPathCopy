@@ -22,14 +22,14 @@ function _get_active_path(text_editor = undefined){
 	}
 
 	let uri = editor.document.uri;
-	let path_obj = path.parse(vscode.workspace.asRelativePath(uri));
-
-	let dir = path_obj.dir;
+	let str_path = vscode.workspace.asRelativePath(uri)
 	ignore_paths.forEach(element => {
-		dir = dir.replace(element, "");
+		str_path = str_path.replace(element, "");
 	});
+	let path_obj = path.parse(str_path);
+
 	let file_name = ignore_all_ext || ignore_exts.includes(path_obj.ext) ? path_obj.name : path_obj.base;
-	let str_path = path.join(dir, file_name).replace(/\\/g, "/");
+	str_path = path.join(path_obj.dir, file_name).replace(/\\/g, "/");
 
 	status_bar.text = str_path;
 	status_bar.show();
