@@ -17,7 +17,7 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension_copy",
+				"command": "superpathcopy_copy",
 				"title": "Copy Relative Path"
 			}
 		],
@@ -36,6 +36,11 @@
 					"SuperPathCopy.format_copy": {
 						"type": "string",
 						"description": "Predefined replacement text in the template, '@result' will be replaced with the specified result."
+					},
+					"SuperPathCopy.ignore_all_ext": {
+						"type": "boolean",
+						"default": false,
+						"description": "If ignore all ext?"
 					}
 				}
 			}

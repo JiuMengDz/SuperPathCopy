@@ -6,6 +6,7 @@ var status_bar = vscode.window.createStatusBarItem();
 var ignore_paths = {}
 var ignore_exts = {}
 var format_str
+var ignore_all_ext = false
 
 /**
  * @param  {vscode.TextEditor} text_editor
@@ -27,25 +28,28 @@ function _get_active_path(text_editor = undefined){
 	ignore_paths.forEach(element => {
 		dir = dir.replace(element, "");
 	});
-	let file_name = ignore_exts.includes(path_obj.ext) ? path_obj.name : path_obj.base;
+	let file_name = ignore_all_ext || ignore_exts.includes(path_obj.ext) ? path_obj.name : path_obj.base;
 	let str_path = path.join(dir, file_name).replace(/\\/g, "/");
 
 	status_bar.text = str_path;
 	status_bar.show();
 }
 
+function _update_configuration(){
+	ignore_paths = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_path");
+	ignore_exts = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_exts");
+	format_str = vscode.workspace.getConfiguration("SuperPathCopy").get("format_copy");
+	ignore_all_ext = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_all_ext");
+}
+
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	ignore_paths = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_path");
-	ignore_exts = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_exts");
-	format_str = vscode.workspace.getConfiguration("SuperPathCopy").get("format_copy");
+	_update_configuration();
 	vscode.workspace.onDidChangeConfiguration((event)=>{
 		if(!event.affectsConfiguration("SuperPathCopy")){ return; }
-		ignore_paths = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_path");
-		ignore_exts = vscode.workspace.getConfiguration("SuperPathCopy").get("ignore_exts");
-		format_str = vscode.workspace.getConfiguration("SuperPathCopy").get("format_copy");
+		_update_configuration();
 		_get_active_path();
 	})
 	
@@ -53,9 +57,9 @@ function activate(context) {
 		_get_active_path(editor);
 	})
 	
-	let disposible = vscode.commands.registerCommand("extension_copy", function(){
+	let disposible = vscode.commands.registerCommand("superpathcopy_copy", function(){
 		let content = status_bar.text;
-		// 存在模板字符串的情况下则应用之
+		// use path_format
 		if(format_str != ""){
 			content = format_str.replace("@result", content);
 		}
@@ -63,7 +67,7 @@ function activate(context) {
 	})
 	
 	_get_active_path();
-	status_bar.command = "extension_copy";
+	status_bar.command = "superpathcopy_copy";
 	context.subscriptions.push(disposible);
 }
 exports.activate = activate;
