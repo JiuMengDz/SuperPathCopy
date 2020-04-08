@@ -1,6 +1,7 @@
 const vscode = require('vscode');
 const copy = require('copy-paste').copy
 const path = require('path')
+const glob = require('glob')
 
 var status_bar = vscode.window.createStatusBarItem();
 status_bar.tooltip = "copy path";
@@ -8,6 +9,7 @@ var ignore_paths = {}
 var ignore_exts = {}
 var format_str
 var ignore_all_ext = false
+var path_icon = "$(folder) "
 
 /**
  * @param  {vscode.TextEditor} text_editor
@@ -24,6 +26,13 @@ function _get_active_path(text_editor = undefined){
 
 	let uri = editor.document.uri;
 	let str_path = vscode.workspace.asRelativePath(uri)
+
+	glob("**/*.lua", function(er, files){
+		console.log(er);
+		console.log(files);
+	})
+	glob.sync("Assets");
+
 	ignore_paths.forEach(element => {
 		str_path = str_path.replace(element, "");
 	});
@@ -32,7 +41,7 @@ function _get_active_path(text_editor = undefined){
 	let file_name = ignore_all_ext || ignore_exts.includes(path_obj.ext) ? path_obj.name : path_obj.base;
 	str_path = path.join(path_obj.dir, file_name).replace(/\\/g, "/");
 
-	status_bar.text = str_path;
+	status_bar.text = path_icon + str_path;
 	status_bar.show();
 }
 
@@ -60,6 +69,7 @@ function activate(context) {
 	
 	let disposible = vscode.commands.registerCommand("superpathcopy_copy", function(){
 		let content = status_bar.text;
+		content = content.replace(path_icon, "");
 		// use path_format
 		if(format_str != ""){
 			content = format_str.replace("@result", content);
