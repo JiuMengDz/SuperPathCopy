@@ -1,9 +1,9 @@
 {
 	"name": "superpathcopy",
-	"displayName": "SuperPathCopy",
+	"displayName": "Super Path Copy",
 	"description": "The extension provides a convenient way for path processing.",
 	"publisher": "JiuMengDZ",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"engines": {
 		"vscode": "^1.0.0"
 	},
@@ -13,11 +13,11 @@
 	"activationEvents": [
 		"*"
 	],
-	"main": "./extension.js",
+	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "superpathcopy_copy",
+				"command": "superpathcopy.copy",
 				"title": "Super Path Copy"
 			}
 		],
@@ -48,7 +48,7 @@
 		"menus": {
 			"editor/context": [
 				{
-					"command": "superpathcopy_copy",
+					"command": "superpathcopy.copy",
 					"group": "navigation"
 				}
 			]
