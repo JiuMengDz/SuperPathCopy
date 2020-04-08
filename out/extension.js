@@ -1,6 +1,6 @@
 const vscode = require('vscode');
 const copy = require('copy-paste').copy
-const pathManager = require('./tools/pathManage').PathManager
+const pathManager = require('./tools/pathManager').PathManager
 
 let status_bar = vscode.window.createStatusBarItem();
 status_bar.tooltip = "copy path";
