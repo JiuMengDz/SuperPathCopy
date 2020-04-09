@@ -1,9 +1,18 @@
-# Change Log
+# Super Path Copy Change Log
 
-All notable changes to the "SuperPathCopy" extension will be documented in this file.
+|   label   | description            |
+| :-------: | :--------------------- |
+| `ABILITY` | User Experience Change |
+|   `UX`    | Change of ability      |
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## v 0.1.2 2020-4-8
 
-## [Unreleased]
+- `[UX]` Beautify interface performance.
 
-- Initial release
+## v 0.1.1 2020-4-8
+
+- `[ABILITY]` Add a right-click shortcut in `context`.
+
+## v 0.1.0 2020-4-7
+
+- Initial release.

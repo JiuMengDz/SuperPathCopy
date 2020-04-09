@@ -1,16 +1,5 @@
-<style>
-    #status_bar_text { 
-        color: white; background-color: #00c;padding: 0;margin: 0;
-        }
-    #vscode_box_status_bar { 
-        background-color: #007acc; padding: 0;margin: 0;
-        }
-</style>
 # **SuperPathCopy**  
-
-<div id = "vscode_box_status_bar"><span id = "status_bar_text">📂 ./JiuMengDz/SuperPathCopy </span></div>
-
- *The extension provides a convenient way for path processing.*
+*The extension provides a convenient way for path processing.*
 
 *このプラグインは、ファイルパスの高速処理ショートカットを提供します。*
 
@@ -41,3 +30,6 @@
 4. Control replication results by configuring `superPathCopy.format_copy`.
 
 ![](https://raw.githubusercontent.com/JiuMengDz/owner_images/master/vscode_extension/superpathcopy/format_test.gif)
+
+## **Development Plan**
+This plug-in will continue to be updated, If you have Suggestions for the functionality of it, issue me! I will make the corresponding development adjustments within the scope of my ability.
