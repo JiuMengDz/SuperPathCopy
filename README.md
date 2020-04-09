@@ -10,7 +10,7 @@
 | :----------------------------: | :------------------------------------------------------------------------------------------------- |
 |  `SuperPathCopy.ignore_path`   | Configure the path to be ignored. Regular matching is not currently supported.                     |
 |  `SuperPathCopy.ignore_exts`   | Configure the omitted suffix name.                                                                 |
-|  `SuperPathCopy.format_copy`   | Configure the replication template,`@result` in that will be replaced with the corresponding path. |
+|  `SuperPathCopy.format_copy`   | Configure the replication template, "`@result`" in that will be replaced with the corresponding path. |
 | `SuperPathCopy.ignore_all_ext` | Ignore suffix names for all paths.                                                                 |
 
 ## **HOW-TO**
@@ -30,6 +30,8 @@
 4. Control replication results by configuring `superPathCopy.format_copy`.
 
 ![](https://raw.githubusercontent.com/JiuMengDz/owner_images/master/vscode_extension/superpathcopy/format_test.gif)
+
+5. You can also copy the path by right-clicking and select the `Super Path Copy` in the menu.
 
 ## **Development Plan**
 This plug-in will continue to be updated, If you have Suggestions for the functionality of it, issue me! I will make the corresponding development adjustments within the scope of my ability.
