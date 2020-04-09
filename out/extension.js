@@ -1,6 +1,6 @@
 const vscode = require('vscode');
 const copy = require('copy-paste').copy
-const pathManager = require('./tools/pathManage').PathManager
+const pathManager = require('./tools/pathManage').PathManager;
 
 let status_bar = vscode.window.createStatusBarItem();
 status_bar.tooltip = "copy path";
@@ -40,8 +40,6 @@ function activate(context) {
 	status_bar.command = "superpathcopy.copy";
 	context.subscriptions.push(disposible);
 }
-exports.activate = activate;
-
 function deactivate() {}
 
 module.exports = {
