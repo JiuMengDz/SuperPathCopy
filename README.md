@@ -6,7 +6,7 @@
 *该插件提供对文件路径的快速处理快捷方式*。
 
 ## **Command List**
-|            Command             | description                                                                                        |
+|            Command             | Description                                                                                        |
 | :----------------------------: | :------------------------------------------------------------------------------------------------- |
 |  `SuperPathCopy.ignore_path`   | Configure the path to be ignored. Regular matching is not currently supported.                     |
 |  `SuperPathCopy.ignore_exts`   | Configure the omitted suffix name.                                                                 |
