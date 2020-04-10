@@ -5,6 +5,10 @@
 | `ABILITY` | User Experience Change |
 |   `UX`    | Change of ability      |
 
+## v 0.2.0 2020-4-10
+
+- `[LICENSE]` Update license file
+
 ## v 0.1.2 2020-4-8
 
 - `[UX]` Beautify interface performance.

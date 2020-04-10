@@ -13,6 +13,16 @@
 |  `SuperPathCopy.format_copy`   | Configure the replication template, "`@result`" in that will be replaced with the corresponding path. |
 | `SuperPathCopy.ignore_all_ext` | Ignore suffix names for all paths.                                                                 |
 
+## **Copy Way**
+
+- Click the status bar item.
+
+![](https://raw.githubusercontent.com/JiuMengDz/owner_images/master/vscode_extension/superpathcopy/click_status_bar.png)
+
+- Right click and select the `Super Path Copy`
+  
+![](https://raw.githubusercontent.com/JiuMengDz/owner_images/master/vscode_extension/superpathcopy/right_click_in_context.png)
+
 ## **HOW-TO**
 
 1. Click the bottom status bar to quickly copy the relative path of the open file.
@@ -30,8 +40,6 @@
 4. Control replication results by configuring `superPathCopy.format_copy`.
 
 ![](https://raw.githubusercontent.com/JiuMengDz/owner_images/master/vscode_extension/superpathcopy/format_test.gif)
-
-5. You can also copy the path by right-clicking and select the `Super Path Copy` in the menu.
 
 ## **Development Plan**
 This plug-in will continue to be updated, If you have Suggestions for the functionality of it, issue me! I will make the corresponding development adjustments within the scope of my ability.
