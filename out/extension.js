@@ -5,6 +5,8 @@ const pathManager = require('./tools/pathManager').PathManager
 let status_bar = vscode.window.createStatusBarItem();
 status_bar.tooltip = "copy path";
 let path_icon = "📂 "
+let emp_str = ""
+let now_select = ""
 let path_manager = new pathManager();
 
 function _update_path_show(editor){
@@ -28,11 +30,20 @@ function activate(context) {
 	vscode.window.onDidChangeActiveTextEditor(function(editor){
 		_update_path_show(editor);
 	})
+
+	vscode.window.onDidChangeTextEditorSelection(function(event){
+		let start_line = event.textEditor.selection.start.line;
+		let start_char = event.textEditor.selection.start.character;
+		let end_char = event.textEditor.selection.end.character;
+		let content = event.textEditor.document.lineAt(start_line).text;
+		now_select = content.substring(start_char, end_char);
+	})
 	
 	let disposible = vscode.commands.registerCommand("superpathcopy.copy", function(){
 		let content = status_bar.text;
+
 		content = content.replace(path_icon, "");
-		content = path_manager.GetFormatPath(content);
+		content = path_manager.GetFormatPath(content, now_select);
 		copy(content);
 	})
 	

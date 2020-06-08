@@ -12,6 +12,7 @@
 |  `SuperPathCopy.ignore_exts`   | Configure the omitted suffix name.                                                                 |
 |  `SuperPathCopy.format_copy`   | Configure the replication template, "`@result`" in that will be replaced with the corresponding path. |
 | `SuperPathCopy.ignore_all_ext` | Ignore suffix names for all paths.                                                                 |
+|`SuperPathCopy.format_str_with_selection`|The `@selection` in the text will be replaced with the currently selected content|
 
 ## **Copy Way**
 

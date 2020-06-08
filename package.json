@@ -37,6 +37,10 @@
 						"type": "string",
 						"description": "Predefined replacement text in the template, '@result' will be replaced with the specified result."
 					},
+					"SuperPathCopy.format_str_with_selection": {
+						"type": "string",
+						"description": "The '@selection' in the text will be replaced with the currently selected content."
+					},
 					"SuperPathCopy.ignore_all_ext": {
 						"type": "boolean",
 						"default": false,

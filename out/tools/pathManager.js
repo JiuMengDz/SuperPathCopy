@@ -12,6 +12,7 @@ class PathManager {
         this._configuration = vscode.workspace.getConfiguration("SuperPathCopy");
         this.ignore_paths = this._configuration.get("ignore_path");
         this.ignore_exts = this._configuration.get("ignore_exts");
+        this.format_str_with_selection = this._configuration.get("format_str_with_selection");
         this.ignore_all_ext = this._configuration.get("ignore_all_ext");
         this.format_str = this._configuration.get("format_copy");
     }
@@ -49,9 +50,14 @@ class PathManager {
         str_path = path.join(path_obj.dir, file_name).replace(/\\/g, "/");
         return str_path;
     }
-    GetFormatPath(str_path){
-        if(this.format_str != ""){
-			str_path = this.format_str.replace("@result", str_path);
+    /**
+     * @param {string} select
+     */
+    GetFormatPath(str_path, select){
+        if (this.format_str_with_selection != "" && select.length > 0) {
+            str_path = this.format_str_with_selection.replace("@result", str_path).replace("@selection", select);
+        }else if(this.format_str != ""){
+            str_path = this.format_str.replace("@result", str_path);
         }
         return str_path;
     }
