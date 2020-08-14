@@ -1,6 +1,7 @@
 const vscode = require('vscode');
 const copy = require('copy-paste').copy
 const pathManager = require('./tools/pathManager').PathManager
+const copyhisManager = require("./tools/CopyHistroyManager").CopyHistroyManager
 
 let status_bar = vscode.window.createStatusBarItem();
 status_bar.tooltip = "copy path";
@@ -8,6 +9,7 @@ let path_icon = "📂 "
 let emp_str = ""
 let now_select = ""
 let path_manager = new pathManager();
+let copy_his_manager = new copyhisManager();
 
 function _update_path_show(editor){
 	let str_path = path_manager.GetRelativePath(editor);
@@ -28,6 +30,7 @@ function activate(context) {
 	})
 
 	vscode.window.onDidChangeActiveTextEditor(function(editor){
+		console.log(editor);
 		_update_path_show(editor);
 	})
 
@@ -44,12 +47,19 @@ function activate(context) {
 
 		content = content.replace(path_icon, "");
 		content = path_manager.GetFormatPath(content, now_select);
+		copy_his_manager.add_new_copy(content)
 		copy(content);
+	})
+	let disposible2 = vscode.commands.registerCommand("superpathcopy.copy_history", function(){
+		vscode.window.showQuickPick(copy_his_manager.get_his_copys()).then((content)=>{
+			console.log(content)
+		})
 	})
 	
 	_update_path_show();
 	status_bar.command = "superpathcopy.copy";
 	context.subscriptions.push(disposible);
+	context.subscriptions.push(disposible2);
 }
 function deactivate() {}
 
