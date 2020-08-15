@@ -23,6 +23,17 @@
 			{
 				"command": "superpathcopy.copy_history",
 				"title": "[History]Super Path Copy"
+				
+			}
+		],
+		"keybindings":[
+			{
+				"command": "superpathcopy.copy_history",
+				"key": "ctrl+alt+numpad2"
+			},
+			{
+				"command": "superpathcopy.copy",
+				"key": "ctrl+alt+numpad1"
 			}
 		],
 		"configuration": [
