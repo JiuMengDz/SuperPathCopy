@@ -35,9 +35,11 @@ function activate(context) {
 	})
 
 	vscode.window.onDidChangeTextEditorSelection(function(event){
-		let start_line = event.textEditor.selection.start.line;
-		let start_char = event.textEditor.selection.start.character;
-		let end_char = event.textEditor.selection.end.character;
+		let cur_selection = event.textEditor.selection
+		
+		let start_line = cur_selection.start.line;
+		let start_char = cur_selection.start.character;
+		let end_char = cur_selection.end.character;
 		let content = event.textEditor.document.lineAt(start_line).text;
 		now_select = content.substring(start_char, end_char);
 	})
