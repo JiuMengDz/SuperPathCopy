@@ -3,7 +3,7 @@
 	"displayName": "Super Path Copy",
 	"description": "The extension provides a convenient way for path processing.",
 	"publisher": "JiuMengDZ",
-	"version": "0.2.3",
+	"version": "0.2.4",
 	"engines": {
 		"vscode": "^1.0.0"
 	},
@@ -23,10 +23,9 @@
 			{
 				"command": "superpathcopy.copy_history",
 				"title": "[History]Super Path Copy"
-				
 			}
 		],
-		"keybindings":[
+		"keybindings": [
 			{
 				"command": "superpathcopy.copy_history",
 				"key": "ctrl+alt+numpad2"
