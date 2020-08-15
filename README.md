@@ -13,6 +13,7 @@
 |  `SuperPathCopy.format_copy`   | Configure the replication template, "`@result`" in that will be replaced with the corresponding path. |
 | `SuperPathCopy.ignore_all_ext` | Ignore suffix names for all paths.                                                                 |
 |`SuperPathCopy.format_str_with_selection`|The `@selection` in the text will be replaced with the currently selected content|
+|`SuperPathCopy.his_copy_max_num`|The maximum number of historical operation records, the maximum is not more than 30.|
 
 ## **Copy Way**
 
@@ -41,6 +42,10 @@
 4. Control replication results by configuring `superPathCopy.format_copy`.
 
 ![](https://raw.githubusercontent.com/JiuMengDz/owner_images/master/vscode_extension/superpathcopy/format_test.gif)
+
+5. View the history of operations, and config it with `superPathCopy.his_copy_max_num`.
+
+![](https://github.com/JiuMengDz/owner_images/blob/master/vscode_extension/superpathcopy/copy_his.gif?raw=true)
 
 ## **Development Plan**
 This plug-in will continue to be updated, If you have Suggestions for the functionality of it, issue me! I will make the corresponding development adjustments within the scope of my ability.

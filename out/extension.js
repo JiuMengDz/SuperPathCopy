@@ -50,9 +50,22 @@ function activate(context) {
 		copy_his_manager.add_new_copy(content)
 		copy(content);
 	})
+
+	function pasteSelected(text_content) {
+        let activeEditor;
+        if (activeEditor = vscode.window.activeTextEditor) {
+            activeEditor.edit(function (textInserter) {
+                textInserter.delete(activeEditor.selection); // Delete anything currently selected
+            }).then(function () {
+                activeEditor.edit(function (textInserter) {
+                    textInserter.insert(activeEditor.selection.start, text_content); // Insert text from list
+                });
+            });
+        }
+    }
 	let disposible2 = vscode.commands.registerCommand("superpathcopy.copy_history", function(){
 		vscode.window.showQuickPick(copy_his_manager.get_his_copys()).then((content)=>{
-			console.log(content)
+			pasteSelected(content)
 		})
 	})
 	

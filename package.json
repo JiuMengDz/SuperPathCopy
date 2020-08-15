@@ -22,7 +22,7 @@
 			},
 			{
 				"command": "superpathcopy.copy_history",
-				"title": "Super Path Copy History"
+				"title": "[History]Super Path Copy"
 			}
 		],
 		"configuration": [
@@ -48,6 +48,11 @@
 					"SuperPathCopy.ignore_all_ext": {
 						"type": "boolean",
 						"default": false,
+						"description": "If ignore all ext?"
+					},
+					"SuperPathCopy.his_copy_max_num": {
+						"type": "number",
+						"default": 15,
 						"description": "If ignore all ext?"
 					}
 				}
