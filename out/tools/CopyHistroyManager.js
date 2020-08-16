@@ -36,7 +36,7 @@ class CopyHistroyManager {
         }
         this.copy_map.set(path, true)
         
-        this.his_copy.push(path);
+        this.his_copy.unshift(path)
         if(this.his_copy.length > this.max_his_number){
             var str = this.his_copy.pop()
             this.copy_map.delete(str)

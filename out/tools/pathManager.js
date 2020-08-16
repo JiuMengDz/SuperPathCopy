@@ -29,6 +29,10 @@ class PathManager {
     OnConfigurationChangeFunc(func){
         this.on_configuration_change = func;
     }
+    
+    /**
+     * @param  {vscode.TextEditor} text_editor=undefined
+     */
     GetRelativePath(text_editor = undefined){
         let editor = text_editor
         if(!editor){

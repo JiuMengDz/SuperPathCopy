@@ -21,6 +21,21 @@ function _update_path_show(editor){
 	status_bar.text = path_icon + str_path;
 }
 
+function _update_now_selection(){
+	let active_editor = vscode.window.activeTextEditor
+	if(!active_editor){
+		now_select = null
+		return
+	}
+	let cur_selection = active_editor.selection
+		
+	let start_line = cur_selection.start.line;
+	let start_char = cur_selection.start.character;
+	let end_char = cur_selection.end.character;
+	let content = active_editor.document.lineAt(start_line).text;
+	now_select = content.substring(start_char, end_char)
+}
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -33,18 +48,9 @@ function activate(context) {
 		console.log(editor);
 		_update_path_show(editor);
 	})
-
-	vscode.window.onDidChangeTextEditorSelection(function(event){
-		let cur_selection = event.textEditor.selection
-		
-		let start_line = cur_selection.start.line;
-		let start_char = cur_selection.start.character;
-		let end_char = cur_selection.end.character;
-		let content = event.textEditor.document.lineAt(start_line).text;
-		now_select = content.substring(start_char, end_char);
-	})
 	
 	let disposible = vscode.commands.registerCommand("superpathcopy.copy", function(){
+		_update_now_selection()
 		let content = status_bar.text;
 
 		content = content.replace(path_icon, "");
