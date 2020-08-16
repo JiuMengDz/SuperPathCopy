@@ -5,6 +5,10 @@
 | `ABILITY` | User Experience Change |
 |   `UX`    | Change of ability      |
 
+## v 0.2.6 2020-8-16
+
+- `[ABILITY]` support custom default his.
+
 ## v 0.2.3 2020-8-15
 
 - `[ABILITY]` Add copy histroy.
