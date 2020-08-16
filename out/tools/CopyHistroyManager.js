@@ -14,6 +14,13 @@ class CopyHistroyManager {
         vscode.workspace.onDidChangeConfiguration((event, args)=>{
             this._update_max_num();
         })
+        this._deal_default_copy_his();
+    }
+    _deal_default_copy_his(){
+        let default_his = this._configuration.get("default_his_copy")
+        default_his.forEach(default_str => {
+            this.add_new_copy(default_str);
+        });
     }
     _update_max_num(){
         let max_num = this._configuration.get("his_copy_max_num");

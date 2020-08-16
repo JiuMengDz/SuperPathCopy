@@ -63,7 +63,12 @@
 					"SuperPathCopy.his_copy_max_num": {
 						"type": "number",
 						"default": 15,
-						"description": "If ignore all ext?"
+						"description": "super path copy histroy."
+					},
+					"SuperPathCopy.default_his_copy": {
+						"type": "array",
+						"default": [],
+						"description": "default his."
 					}
 				}
 			}
