@@ -68,7 +68,7 @@
 					"SuperPathCopy.default_his_copy": {
 						"type": "array",
 						"default": [],
-						"description": "default his."
+						"description": "custom default his."
 					}
 				}
 			}
