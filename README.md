@@ -15,6 +15,7 @@
 |`SuperPathCopy.format_str_with_selection`|The `@selection` in the text will be replaced with the currently selected content|
 |`SuperPathCopy.his_copy_max_num`|The maximum number of historical operation records, the maximum is not more than 30.|
 |`SuperPathCopy.default_his_copy`|Set the default storage path content, restart and take effect.|
+|`SuperPathCopy.concat_symbol`|Connection symbol of the path.|
 
 ## **Copy Way**
 
