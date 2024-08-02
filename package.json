@@ -3,7 +3,7 @@
 	"displayName": "Super Path Copy",
 	"description": "The extension provides a convenient way for path processing.",
 	"publisher": "JiuMengDZ",
-	"version": "0.2.6",
+	"version": "0.2.7",
 	"engines": {
 		"vscode": "^1.0.0"
 	},
@@ -59,6 +59,11 @@
 						"type": "boolean",
 						"default": false,
 						"description": "If ignore all ext?"
+					},
+					"SuperPathCopy.concat_symbol":{
+						"type": "string",
+						"default": "/",
+						"description": "Connection symbol of the path"
 					},
 					"SuperPathCopy.his_copy_max_num": {
 						"type": "number",

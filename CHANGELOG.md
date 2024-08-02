@@ -5,6 +5,9 @@
 | `ABILITY` | User Experience Change |
 |   `UX`    | Change of ability      |
 
+## v 0.2.7 2024-8-2
+- `[ABILITY]` add "SuperPathCopy.concat_symbol" setting.
+
 ## v 0.2.6 2020-8-16
 
 - `[ABILITY]` support custom default his.

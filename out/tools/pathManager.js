@@ -15,6 +15,7 @@ class PathManager {
         this.format_str_with_selection = this._configuration.get("format_str_with_selection");
         this.ignore_all_ext = this._configuration.get("ignore_all_ext");
         this.format_str = this._configuration.get("format_copy");
+        this.concat_symbol = this._configuration.get("concat_symbol");
     }
     _on_reginster(){
         vscode.workspace.onDidChangeConfiguration((event)=>{
@@ -51,7 +52,7 @@ class PathManager {
         let path_obj = path.parse(str_path);
 
         let file_name = this.ignore_all_ext || this.ignore_exts.includes(path_obj.ext) ? path_obj.name : path_obj.base;
-        str_path = path.join(path_obj.dir, file_name).replace(/\\/g, "/");
+        str_path = path.join(path_obj.dir, file_name).replace(/\\/g, this.concat_symbol);
         return str_path;
     }
     /**
