@@ -5,6 +5,12 @@
 | `ABILITY` | User Experience Change |
 |   `UX`    | Change of ability      |
 
+## v 0.2.9 2026-11-11
+
+- Fix copying an outdated path after renaming a file. [来自前同事gyh的反馈]
+- Refresh the status bar path when files are renamed.
+- Skip copying when no editor is active.
+
 ## v 0.2.7 2024-8-2
 - `[ABILITY]` add "SuperPathCopy.concat_symbol" setting.
 

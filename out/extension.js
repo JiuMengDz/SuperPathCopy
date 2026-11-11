@@ -44,16 +44,23 @@ function activate(context) {
 		_update_path_show();
 	})
 
-	vscode.window.onDidChangeActiveTextEditor(function(editor){
-		console.log(editor);
+	context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(function(editor){
 		_update_path_show(editor);
-	})
+	}));
+	if (vscode.workspace.onDidRenameFiles) {
+		context.subscriptions.push(vscode.workspace.onDidRenameFiles(function(){
+			_update_path_show();
+		}));
+	}
 	
 	let disposible = vscode.commands.registerCommand("superpathcopy.copy", function(){
+		let content = path_manager.GetRelativePath();
+		if (!content) {
+			status_bar.hide();
+			return;
+		}
+		_update_path_show();
 		_update_now_selection()
-		let content = status_bar.text;
-
-		content = content.replace(path_icon, "");
 		content = path_manager.GetFormatPath(content, now_select);
 		copy_his_manager.add_new_copy(content)
 		copy(content);
