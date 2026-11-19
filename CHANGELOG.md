@@ -5,6 +5,10 @@
 | `ABILITY` | User Experience Change |
 |   `UX`    | Change of ability      |
 
+## v 0.2.10 2026-11-19
+
+- Use the real on-disk filename case, so case-only renames and restored tabs with a stale URI copy the correct path.
+
 ## v 0.2.9 2026-11-11
 
 - Fix copying an outdated path after renaming a file. [来自前同事gyh的反馈]
