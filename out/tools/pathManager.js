@@ -1,6 +1,7 @@
 "use strict";
 const vscode = require('vscode')
 const path = require('path')
+const fs = require('fs')
 
 Object.defineProperty(exports, "__esModule", {value: true});
 class PathManager {
@@ -30,6 +31,28 @@ class PathManager {
     OnConfigurationChangeFunc(func){
         this.on_configuration_change = func;
     }
+
+    // 文件重命名只改变大小写时, editor.document.uri 可能仍保留旧大小写
+    // (尤其是恢复的标签页)。以磁盘上的真实文件名称为准。
+    _apply_actual_file_name(str_path, file_path){
+        if(!file_path){ return str_path; }
+        let base_name = path.basename(file_path);
+        let actual_name = base_name;
+        try{
+            let dir_name = path.dirname(file_path);
+            let lower_base_name = base_name.toLowerCase();
+            let entries = fs.readdirSync(dir_name);
+            for(let entry of entries){
+                if(entry.toLowerCase() === lower_base_name){
+                    actual_name = entry;
+                    break;
+                }
+            }
+        }catch(e){}
+        if(actual_name === base_name){ return str_path; }
+        let sep_index = Math.max(str_path.lastIndexOf("/"), str_path.lastIndexOf("\\"));
+        return sep_index < 0 ? actual_name : str_path.substring(0, sep_index + 1) + actual_name;
+    }
     
     /**
      * @param  {vscode.TextEditor} text_editor=undefined
@@ -45,6 +68,8 @@ class PathManager {
 
         let uri = editor.document.uri;
         let str_path = vscode.workspace.asRelativePath(uri)
+        let fs_path = uri && uri.fsPath ? uri.fsPath : (typeof uri === "string" ? uri : "");
+        str_path = this._apply_actual_file_name(str_path, fs_path);
 
         this.ignore_paths.forEach(element => {
             str_path = str_path.replace(element, "");

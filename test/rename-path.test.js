@@ -1,5 +1,6 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const os = require('node:os');
 const path = require('node:path');
 const vm = require('node:vm');
 const { test } = require('node:test');
@@ -29,7 +30,7 @@ function setup() {
         },
         workspace: {
             getConfiguration: () => ({ get: key => settings[key] }),
-            asRelativePath: uri => uri,
+            asRelativePath: uri => typeof uri === 'string' ? uri : (uri.relativePath || uri.fsPath || ''),
             onDidChangeConfiguration: () => disposable,
             onDidRenameFiles: callback => {
                 listeners.rename = callback;
@@ -82,4 +83,22 @@ test('copy without an active editor does not reuse the previous path', () => {
     app.vscode.window.activeTextEditor = undefined;
     app.copy();
     assert.deepEqual(app.copies, []);
+});
+
+test('stale case in the editor URI uses the real on-disk filename case', () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'superpathcopy-'));
+    fs.writeFileSync(path.join(dir, 'LuaHttpsDnsObj.lua'), '');
+    try {
+        const app = setup();
+        app.vscode.window.activeTextEditor.document.uri = {
+            scheme: 'file',
+            fsPath: path.join(dir, 'LuaHttpsDNSObj.lua'),
+            relativePath: 'Assets/obj/LuaHttpsDNSObj.lua'
+        };
+        app.copy();
+        assert.deepEqual(app.copies, ['Assets/obj/LuaHttpsDnsObj.lua']);
+        assert.equal(app.status.text, '📂 Assets/obj/LuaHttpsDnsObj.lua');
+    } finally {
+        fs.rmSync(dir, { recursive: true, force: true });
+    }
 });
